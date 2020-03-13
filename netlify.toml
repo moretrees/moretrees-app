@@ -4,10 +4,27 @@
   status = 200
   force = true
   headers = {X-From = "netlify"}
-
 [[redirects]]
-  from = "/api/v1/users/*"
+  from = "/api/v1/users"
   to = "https://moretrees-api.herokuapp.com/api/v1/users"
+  status = 200
+  force = true
+  headers = {X-From = "netlify"}
+[[redirects]]
+  from = "/api/v1/users/login"
+  to = "https://moretrees-api.herokuapp.com/api/v1/users/login"
+  status = 200
+  force = true
+  headers = {X-From = "netlify"}
+[[redirects]]
+  from = "/api/v1/users/signup"
+  to = "https://moretrees-api.herokuapp.com/api/v1/users/signup"
+  status = 200
+  force = true
+  headers = {X-From = "netlify"}
+[[redirects]]
+  from = "/api/v1/users/me/logoutall"
+  to = "https://moretrees-api.herokuapp.com/api/v1/users/me/logoutall"
   status = 200
   force = true
   headers = {X-From = "netlify"}
