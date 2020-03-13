@@ -28,6 +28,12 @@
   status = 200
   force = true
   headers = {X-From = "netlify"}
+[[redirects]]
+  from = "/api/v1/s3/sign-s3"
+  to = "https://moretrees-api.herokuapp.com/api/v1/s3/sign-s3"
+  status = 200
+  force = true
+  headers = {X-From = "netlify"}
 
 # The following redirect is intended for use with most SPAs that handle
 # routing internally.
