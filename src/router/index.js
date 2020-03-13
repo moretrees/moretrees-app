@@ -14,7 +14,7 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      title: 'Home - MoreTrees.nyc',
+      title: "Home - MoreTrees.nyc"
     }
   },
   {
@@ -22,7 +22,7 @@ const routes = [
     name: "Submit",
     component: Submit,
     meta: {
-      title: 'Submit - MoreTrees.nyc',
+      title: "Submit - MoreTrees.nyc"
     }
   },
   {
@@ -30,7 +30,7 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
     meta: {
-      title: 'Dashboard - MoreTrees.nyc',
+      title: "Dashboard - MoreTrees.nyc"
     }
   },
   {
@@ -38,7 +38,7 @@ const routes = [
     name: "Login",
     component: Login,
     meta: {
-      title: 'Login - MoreTrees.nyc',
+      title: "Login - MoreTrees.nyc"
     }
   },
   {
@@ -46,7 +46,7 @@ const routes = [
     name: "Signup",
     component: Signup,
     meta: {
-      title: 'Signup - MoreTrees.nyc',
+      title: "Signup - MoreTrees.nyc"
     }
   }
   // {
