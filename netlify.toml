@@ -1,16 +1,16 @@
-[[redirects]]
-  from = "/api/*"
-  to = "https://moretrees-api.herokuapp.com"
-  status = 200
-  force = true
-  headers = {X-From = "netlify"}
-
 # The following redirect is intended for use with most SPAs that handle
 # routing internally.
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://moretrees-api.herokuapp.com"
+  status = 200
+  force = true
+  headers = {X-From = "netlify"}
 
 # [[headers]]
 #   # Define which paths this specific [[headers]] block will cover.
