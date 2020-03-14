@@ -40,8 +40,8 @@ export default {
     async addTree({ commit, rootState }, data) {
       try {
         const newTreeData = {
-          ...data,
-          ...rootState.geo.treeLocation
+          ...rootState.geo.treeLocation,
+          ...data
         };
         const result = await TreeService.addTree(newTreeData);
 

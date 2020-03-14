@@ -5,14 +5,12 @@
     </div>
     <!-- <header class="header">
       <img src="#" class="image__preview" />
-    </header> -->
+    </header>-->
     <main class="main">
       <p class="description">Hey, I found an empty tree bed!</p>
       <form class="tree-form" @submit.prevent="handleSubmit">
         <div class="tree-form__row">
-          <label for="photo" class="tree-form__row-label"
-            >Step 1: Upload or Snap a photo</label
-          >
+          <label for="photo" class="tree-form__row-label">Step 1: Upload or Snap a photo</label>
           <input
             @change="handleFileSelection"
             type="file"
@@ -21,9 +19,7 @@
           />
         </div>
         <div class="tree-form__row">
-          <label for="address" class="tree-form__row-label"
-            >Step 2: Approx. Address</label
-          >
+          <label for="address" class="tree-form__row-label">Step 2: Approx. Address</label>
           <input
             v-model="address"
             type="text"
@@ -31,11 +27,28 @@
             class="tree-form__input-text"
             placeholder="4th ave and 9th st."
           />
+          <section class="tree-form__section">
+            <label for="latitude" class="tree-form__row-label">lat.</label>
+            <label for="longitude" class="tree-form__row-label">lon.</label>
+            <input
+              v-model="latitude"
+              type="text"
+              name="latitude"
+              class="tree-form__input-text"
+              placeholder="e.g. 46.1"
+            />
+            <input
+              v-model="longitude"
+              type="text"
+              name="longitude"
+              class="tree-form__input-text"
+              placeholder="e.g. -71.1"
+            />
+          </section>
+          <button @click.prevent="resetCoordinates" class="coordinates-reset">reset</button>
         </div>
         <div class="tree-form__row">
-          <label for="address" class="tree-form__row-label"
-            >Step 3: Submit</label
-          >
+          <label for="address" class="tree-form__row-label">Step 3: Submit</label>
           <input type="submit" value="submit" class="tree-form__input-submit" />
         </div>
       </form>
@@ -53,6 +66,30 @@ export default {
       address: null
     };
   },
+  computed: {
+    latitude: {
+      get: function() {
+        if (this.$store.state.geo.treeLocation !== null) {
+          return this.$store.state.geo.treeLocation.latitude;
+        }
+        return 0;
+      },
+      set: function(newValue) {
+        this.$store.dispatch("setTreeLatitude", newValue);
+      }
+    },
+    longitude: {
+      get: function() {
+        if (this.$store.state.geo.treeLocation !== null) {
+          return this.$store.state.geo.treeLocation.longitude;
+        }
+        return 0;
+      },
+      set: function(newValue) {
+        this.$store.dispatch("setTreeLongitude", newValue);
+      }
+    }
+  },
   components: {
     MapComponent
   },
@@ -64,9 +101,14 @@ export default {
     handleSubmit() {
       const newData = {
         photo: this.photo,
-        address: this.address
+        address: this.address,
+        latitude: this.longitude,
+        longitude: this.latitude
       };
       this.$store.dispatch("addTree", newData);
+    },
+    resetCoordinates() {
+      this.$store.dispatch("setTreeLocation", { longitude: 0, latitude: 0 });
     }
   }
 };
@@ -77,21 +119,23 @@ export default {
   width: 100%;
   height: calc(100vh - 2rem);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 #map-container {
   width: 100%;
   height: 100%;
-  // position:absolute;
-  // top:0;
-  // left:0;
+  flex-grow: 1;
+  flex-basis: 50%;
 }
 
 .main {
-  position: fixed;
+  // position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
+  flex-grow: 2;
   background-color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -119,6 +163,12 @@ export default {
   height: 100%;
   max-width: 600px;
   margin: 0 auto;
+
+  &__section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
 
   &__row {
     width: 100%;
