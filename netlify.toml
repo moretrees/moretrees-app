@@ -1,36 +1,6 @@
 [[redirects]]
-  from = "/api/v1/trees"
-  to = "https://moretrees-api.herokuapp.com/api/v1/trees"
-  status = 200
-  force = true
-  headers = {X-From = "netlify"}
-[[redirects]]
-  from = "/api/v1/users"
-  to = "https://moretrees-api.herokuapp.com/api/v1/users"
-  status = 200
-  force = true
-  headers = {X-From = "netlify"}
-[[redirects]]
-  from = "/api/v1/users/login"
-  to = "https://moretrees-api.herokuapp.com/api/v1/users/login"
-  status = 200
-  force = true
-  headers = {X-From = "netlify"}
-[[redirects]]
-  from = "/api/v1/users/signup"
-  to = "https://moretrees-api.herokuapp.com/api/v1/users/signup"
-  status = 200
-  force = true
-  headers = {X-From = "netlify"}
-[[redirects]]
-  from = "/api/v1/users/me/logoutall"
-  to = "https://moretrees-api.herokuapp.com/api/v1/users/me/logoutall"
-  status = 200
-  force = true
-  headers = {X-From = "netlify"}
-[[redirects]]
-  from = "/api/v1/s3/sign-s3"
-  to = "https://moretrees-api.herokuapp.com/api/v1/s3/sign-s3"
+  from = "/api/*"
+  to = "https://moretrees-api.herokuapp.com/api/:splat"
   status = 200
   force = true
   headers = {X-From = "netlify"}
@@ -41,8 +11,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-
 
 # [[headers]]
 #   # Define which paths this specific [[headers]] block will cover.
