@@ -102,8 +102,8 @@ export default {
       const newData = {
         photo: this.photo,
         address: this.address,
-        latitude: this.longitude,
-        longitude: this.latitude
+        latitude: this.latitude,
+        longitude: this.longitude
       };
       this.$store.dispatch("addTree", newData);
     },
